@@ -1,22 +1,20 @@
-import { sql } from '@/lib/db';
+import { neon } from '@neondatabase/serverless';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
-    const { name, email, company, message } = await req.json();
+    const data = await req.json();
+    const sql = neon(process.env.DATABASE_URL!);
 
-    if (!name || !email) {
-      return NextResponse.json({ error: 'Name and email are required' }, { status: 400 });
-    }
-
+    // Using tagged template literal for safety and correct typing
     await sql`
-      INSERT INTO leads (name, email, company, message)
-      VALUES (${name}, ${email}, ${company}, ${message})
+      INSERT INTO leads (name, email, hospital, specialty, volume, message)
+      VALUES (${data.name}, ${data.email}, ${data.hospital}, ${data.specialty}, ${data.volume}, ${data.message})
     `;
 
-    return NextResponse.json({ message: 'Lead captured successfully' });
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Failed to capture lead:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error('Database Error:', error);
+    return NextResponse.json({ error: 'Failed to submit' }, { status: 500 });
   }
 }

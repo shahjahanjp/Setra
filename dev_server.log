@@ -1,0 +1,25 @@
+
+> setra-group@1.0.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use by an unknown process, using available port 3006 instead.
+   ▲ Next.js 15.5.18
+   - Local:        http://localhost:3006
+   - Network:      http://192.168.0.2:3006
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 9.5s (1391 modules)
+ GET / 200 in 11357ms
+ ✓ Compiled in 491ms (656 modules)
+ GET / 200 in 65ms
+ ✓ Compiled in 243ms (656 modules)
+ GET / 200 in 62ms
+ ✓ Compiled in 187ms (656 modules)
+ ○ Compiling /api/leads ...
+ ✓ Compiled /api/leads in 1506ms (746 modules)
+ POST /api/leads 200 in 2578ms
+ ✓ Compiled in 599ms (657 modules)
+Compiled in 481ms (656 modules)

@@ -1,12 +1,20 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-jakarta',
+})
 
 export const metadata: Metadata = {
-  title: 'Setra Group | Precision Surgical Supplies Scotland',
-  description: 'High-quality surgical instruments and theater essentials for B2B healthcare partners across the UK. Based in Glasgow, Scotland.',
+  title: 'Setra Group | Premier Surgical Instruments & Supplies',
+  description: 'Precision-engineered surgical instruments and medical supplies from the heart of Scotland. Serving NHS and private clinics with clinical excellence.',
 }
 
 export default function RootLayout({
@@ -15,8 +23,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${jakarta.variable} scroll-smooth`}>
+      <body className="bg-medical-dark text-white antialiased">
+        {children}
+      </body>
     </html>
   )
 }
